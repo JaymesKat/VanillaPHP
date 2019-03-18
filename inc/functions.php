@@ -37,13 +37,31 @@ function display_user_html($user){
             $user['first_name']." ".$user['last_name']."
             </span>
             <p>".$user['email'].
-            "</p>
-            <a href='#!' class='secondary-content'>Deactivate</a>
-            </li>";
+            "</p>"
+            .($user['is_active'] == 'yes'?
+             "<a href='users.php?id=".$user['id']."&is_active=no' class='secondary-content'>Deactivate</a>":
+             "<a href='users.php?id=".$user['id']."&is_active=yes' class='secondary-content'>Activate</a>").
+            "</li>";
 }
 
 function check_name($name){
     return preg_match("/^[a-zA-Z ]*$/",$name);
+}
+
+function update_user_status($user_id, $new_status){
+    include 'connection.php';
+
+    $sql = "UPDATE users SET is_active = ? WHERE id = ?";
+    try {
+        $results = $db->prepare($sql);
+        $results->bindValue(1, $new_status, PDO::PARAM_STR);
+        $results->bindValue(2, $user_id, PDO::PARAM_INT);
+        $results->execute();
+    } catch (Exception $e){
+        echo "Error!: ".$e->getMessage();
+        return false;
+    }
+    return true;
 }
 
 ?>
