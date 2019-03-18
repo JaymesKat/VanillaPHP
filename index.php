@@ -20,7 +20,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
             if(empty($user)){
             $error_message = 'User with given email was not found';
             } else {
-                if($user_pass !== $user['pass']){
+                if(!password_verify($user_pass, $user['pass'])){
                     $error_message = "Incorrect Password";
                 } else {
                     $_SESSION['logged_in'] = true;

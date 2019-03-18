@@ -24,6 +24,7 @@
         $error_message = 'User already exists';
     }
     else {
+        $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
         if(add_user($first_name, $last_name, $user_email, $user_pass)){
             header('Location: users.php');
             exit;
