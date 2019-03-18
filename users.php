@@ -2,6 +2,9 @@
   session_start();
   include "inc/functions.php";
 
+  if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
+    header("Location: index.php");
+  }
   $message = "";
   if($_SERVER['REQUEST_METHOD'] == 'GET'){
     if(isset($_GET['is_active']) && isset($_GET['id'])){
