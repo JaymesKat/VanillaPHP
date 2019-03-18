@@ -1,0 +1,50 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+form {
+  padding: 30px;
+}
+
+.msg {
+  width:75%;
+  padding:10px;
+  margin: 40px;
+  color: white;
+  border-radius: 3px;
+}
+.msg-error {
+  background-color: #F44336;
+}
+.msg-alert {
+  background-color: #ff9800;
+}
+
+.msg-info{
+  background-color: #03a9f4;
+}
+
+.msg-success{
+  background-color: #4CAF50;
+}
