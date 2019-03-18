@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include "inc/functions.php";
 
   $first_name = $last_name = $user_email = $user_pass = $confirm_pass = '';
