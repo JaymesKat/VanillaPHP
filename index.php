@@ -1,24 +1,20 @@
 <?php
 session_start();
-// Disable form re-submission when back button is pressed
-header("Cache-Control: no cache");
-session_cache_limiter("private_no_expire");
 
 include "inc/functions.php";
 $user_email = $user_pass = '';
-var_dump($_SESSION);
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
-    echo 'inside if';
     header('Location: users.php');
 } else {
-    echo 'inside else';
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user_email = trim(filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL));
         $user_pass = trim(filter_input(INPUT_POST, 'user_pass', FILTER_SANITIZE_STRING));
 
         if(empty($user_email) || empty($user_pass)){
             $error_message = 'Please fill all required fields: Email and Password';
+        } elseif(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
+            $error_message = 'Invalid email';
         } else{
             $user = find_user_by_email($user_email);
             if(empty($user)){

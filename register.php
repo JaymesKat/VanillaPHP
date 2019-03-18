@@ -15,7 +15,10 @@
         $error_message = 'Please fill all required fields: First name, Last name, Email, Password, Password Confirmation';
     } elseif(!check_name($first_name) || !check_name($last_name)){
         $error_message = 'First name and Last name should have only letters or white spaces';
-    } elseif($user_pass !== $confirm_pass){
+    } elseif(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
+        $error_message = 'Invalid email';
+    }
+    elseif($user_pass !== $confirm_pass){
         $error_message = 'Passwords do not match';
     } elseif(!empty(find_user_by_email($user_email))){
         $error_message = 'User already exists';
