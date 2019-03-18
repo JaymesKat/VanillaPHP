@@ -16,7 +16,10 @@
         $error_message = 'First name and Last name should have only letters or white spaces';
     } elseif($user_pass !== $confirm_pass){
         $error_message = 'Passwords do not match';
-    } else {
+    } elseif(!empty(find_user_by_email($user_email))){
+        $error_message = 'User already exists';
+    }
+    else {
         if(add_user($first_name, $last_name, $user_email, $user_pass)){
             header('Location: users.php');
             exit;
