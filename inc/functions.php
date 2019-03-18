@@ -13,6 +13,20 @@ function get_all_users(){
     return $users;
 }
 
+function find_user_by_email($email){
+    include 'connection.php';
+
+    try {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $results = $db->prepare($sql);
+        $results->bindValue(1, $email, PDO::PARAM_STR);
+        $results->execute();
+        return $results->fetch();
+    } catch(Exception $e){
+        echo "Error!: ".$e->getMessage();
+    }
+}
+
 function add_user($first_name, $last_name, $email, $password){
     include 'connection.php';
 
