@@ -15,12 +15,12 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Vanilla App</a>
       <ul class="right hide-on-med-and-down">
-        <?php if(is_authenticated()) {?>
-        <li><a href="/login">Login</a></li>
+        <?php if(!is_authenticated()) {?>
+        <li><a href="/index.php">Login</a></li>
         <li><a href="/register.php">Register</a></li>
         <?php } else {?>
           <li><a href="#">Profile</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="/procedures/doLogout.php">Logout</a></li>
           <?php } ?>
       </ul>
 
