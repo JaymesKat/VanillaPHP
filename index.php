@@ -30,6 +30,10 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                 }
             }
         }
+    } elseif($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if(isset($_GET['logout'])){
+            $_SESSION['logout_msg'] = 'Successfully Logged out';
+          }
     }
 }
 include "inc/header.php";
@@ -43,6 +47,10 @@ include "inc/header.php";
                     <?php 
                         if(isset($error_message)){
                             echo "<p class='msg msg-error'>".$error_message."</p>";
+                        }
+                        if(isset($_SESSION['logout_msg'])){
+                            echo "<p class='msg msg-success'>".$_SESSION['logout_msg']."</p>";
+                            unset($_SESSION['logout_msg']);
                         }
                     ?> 
                     <div class="row margin">
