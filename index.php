@@ -24,6 +24,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                     $error_message = "Incorrect Password";
                 } else {
                     $_SESSION['logged_in'] = true;
+                    $_SESSION['logged_in_user_id'] = (int) $user['id'];
+                    $_SESSION['logged_in_user_role'] = (int) $user['role'];
                     header("Location: users.php");
                 }
             }

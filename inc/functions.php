@@ -30,7 +30,7 @@ function find_user_by_email($email){
 function add_user($first_name, $last_name, $email, $password){
     include 'connection.php';
 
-    $sql = "INSERT INTO users (first_name, last_name, email, pass) VALUES(?, ?, ?, ?)";
+    $sql = "INSERT INTO users (first_name, last_name, email, pass, role) VALUES(?, ?, ?, ?, 2)";
     try {
         $results = $db->prepare($sql);
         $results->bindValue(1, $first_name, PDO::PARAM_STR);
@@ -76,6 +76,13 @@ function update_user_status($user_id, $new_status){
         return false;
     }
     return true;
+}
+
+function is_authenticated(){
+    if(isset($_SESSION['logged_in'])){
+        return $_SESSION['logged_in'];
+    }
+    return false;
 }
 
 ?>
