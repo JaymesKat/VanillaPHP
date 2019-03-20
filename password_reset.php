@@ -40,8 +40,13 @@ include "inc/header.php";
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-communication-email prefix"></i>
+<<<<<<< Updated upstream
                             <input name="user_email" id="user_email" type="email" class="validate" value="<?php echo htmlspecialchars($user_email); ?>">
                             <label for="user_email" class="center-align">Enter email here to receive password reset instructions</label>
+=======
+                            <input name="user_email" id="user_email" type="email" class="validate" required>
+                            <label for="user_email" class="center-align">Enter email here to receive password reset link</label>
+>>>>>>> Stashed changes
                         </div>
                     </div>
                     <div class="row">

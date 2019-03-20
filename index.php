@@ -9,7 +9,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
 } else {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user_email = trim(filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL));
-        $user_pass = trim(filter_input(INPUT_POST, 'user_pass', FILTER_SANITIZE_STRING));
+        $user_pass = $_POST['user_pass'];
 
         if(empty($user_email) || empty($user_pass)){
             $error_message = 'Please fill all required fields: Email and Password';
@@ -26,6 +26,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                     $_SESSION['logged_in'] = true;
                     $_SESSION['logged_in_user_id'] = (int) $user['id'];
                     $_SESSION['logged_in_user_role'] = (int) $user['role'];
+                    $_SESSION['display_login_success'] = true;
                     header("Location: users.php");
                 }
             }
@@ -56,14 +57,14 @@ include "inc/header.php";
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-communication-email prefix"></i>
-                            <input name="user_email" id="user_email" type="email" class="validate" value="<?php echo htmlspecialchars($user_email); ?>">
+                            <input name="user_email" id="user_email" type="email" class="validate" value="<?php echo htmlspecialchars($user_email); ?>" required/>
                             <label for="user_email" class="center-align">Email</label>
                         </div>
                     </div>
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-action-lock-outline prefix"></i>
-                            <input name="user_pass" id="user_pass" type="password" class="validate">
+                            <input name="user_pass" id="user_pass" type="password" class="validate" required/>
                             <label for="user_pass">Password</label>
                         </div>
                     </div>
@@ -72,7 +73,7 @@ include "inc/header.php";
                             <button type="submit" class="btn waves-effect waves-light col s12 light-blue lighten-1">Login</button>
                         </div>
                         <div class="input-field col s12">
-                            <p class="margin center medium-small sign-up">First time here? <a href="register.php">Sign Up</a></p>
+                            <p class="margin center medium-small sign-up">First time here? <a href="register.php">Register</a></p>
                             <p class="margin center medium-small sign-up">Forgot your password? <a href="password_reset.php">Reset</a></p>
                         </div>
                     </div>

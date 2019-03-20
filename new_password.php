@@ -44,14 +44,14 @@ include "inc/header.php";
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-action-lock-outline prefix"></i>
-                            <input name="user_pass" id="user_pass" type="password" class="validate" value="<?php echo htmlspecialchars($user_pass); ?>">
+                            <input name="user_pass" id="user_pass" type="password" class="validate" value="<?php echo htmlspecialchars($user_pass); ?>" required/>
                             <label for="user_pass">Password</label>
                         </div>
                     </div>
                     <div class="row margin">
                         <div class="input-field col s12">
                             <i class="mdi-action-lock-outline prefix"></i>
-                            <input name="confirm_pass" id="confirm_pass" type="password" value="<?php echo htmlspecialchars($confirm_pass); ?>">
+                            <input name="confirm_pass" id="confirm_pass" type="password" value="<?php echo htmlspecialchars($confirm_pass); ?>" required>
                             <label for="confirm_pass">Re-type password</label>
                         </div>
                     </div>
