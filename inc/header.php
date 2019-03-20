@@ -25,7 +25,13 @@
       </ul>
 
         <ul id="nav-mobile" class="sidenav">
-          <li><a href="#">Navbar Link</a></li>
+          <?php if(!is_authenticated()) {?>
+            <li><a href="/index.php">Login</a></li>
+            <li><a href="/register.php">Register</a></li>
+          <?php } else {?>
+              <li><a href="/profile.php">Profile</a></li>
+              <li><a href="/procedures/doLogout.php">Logout</a></li>
+          <?php } ?>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
