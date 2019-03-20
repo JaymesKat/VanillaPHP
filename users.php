@@ -13,13 +13,15 @@
       update_user_status($user_id, $is_active);
       header("Location: users.php?success");
     }
-
     if(isset($_GET['success'])){
       $message = 'User status updated';
     }
 
-    if(isset($_SESSION['logged_in'])){
-      $message = 'You are logged in';
+    if(isset($_SESSION['logged_in']) 
+      && isset($_SESSION['display_login_success'])
+      && ($_SESSION['display_login_success'] == true)){
+        $message = 'You are logged in';
+        $_SESSION['display_login_success'] = false; 
     }
   }
 

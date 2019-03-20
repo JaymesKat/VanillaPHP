@@ -7,7 +7,7 @@
 })(jQuery); // end of jQuery name space
 
 setTimeout(function(){
-  if ($('.msg').length > 0) {
-    $('.msg').remove();
+  if ($('.msg.msg-success').length > 0) {
+    $('.msg.msg-success').remove();
   }
-}, 4000)
+}, 5000)

@@ -13,7 +13,7 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Vanilla App</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">PetProject</a>
       <ul class="right hide-on-med-and-down">
         <?php if(!is_authenticated()) {?>
         <li><a href="/index.php">Login</a></li>
