@@ -2,10 +2,8 @@
   session_start();
   include "inc/functions.php";
 
-  if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']){
-    header("Location: index.php");
-  }
-  $message = "";
+  redirect_unauthenticated_user_to_login($_SESSION);
+  
   if($_SERVER['REQUEST_METHOD'] == 'GET'){
     if(isset($_GET['is_active']) && isset($_GET['id'])){
       $user_id = $_GET['id'];
@@ -20,7 +18,7 @@
     if(isset($_SESSION['logged_in']) 
       && isset($_SESSION['display_login_success'])
       && ($_SESSION['display_login_success'] == true)){
-        $message = 'You are logged in';
+        $message = 'Successfully logged in';
         $_SESSION['display_login_success'] = false; 
     }
   }
@@ -31,12 +29,12 @@
 <div class="section no-pad-bot" id="index-banner">
 <div class="container"> 
         <?php 
-          if($message){
+          if(isset($message)){
             echo "<p class='msg msg-success'>".$message."</p>";
           }
         ?>
         <h4>Users</h4>	
-        <div id="login-page" class="row">
+        <div id="users-page" class="row">
             <div class="col s12">
                 <ul class="collection">
                     <?php
