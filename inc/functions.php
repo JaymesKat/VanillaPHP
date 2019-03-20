@@ -13,6 +13,20 @@ function get_all_users(){
     return $users;
 }
 
+function get_user_by_id($id){
+    include 'connection.php';
+
+    try {
+        $sql = "SELECT first_name, last_name, email FROM users WHERE id = ?";
+        $results = $db->prepare($sql);
+        $results->bindValue(1, $id, PDO::PARAM_STR);
+        $results->execute();
+        return $results->fetch();
+    } catch(Exception $e){
+        echo "Error!: ".$e->getMessage();
+    }
+}
+
 function find_user_by_email($email){
     include 'connection.php';
 
@@ -70,6 +84,23 @@ function update_user_status($user_id, $new_status){
         $results = $db->prepare($sql);
         $results->bindValue(1, $new_status, PDO::PARAM_STR);
         $results->bindValue(2, $user_id, PDO::PARAM_INT);
+        $results->execute();
+    } catch (Exception $e){
+        echo "Error!: ".$e->getMessage();
+        return false;
+    }
+    return true;
+}
+
+function update_user_profile($user_id, $first_name, $last_name){
+    include 'connection.php';
+
+    $sql = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?";
+    try {
+        $results = $db->prepare($sql);
+        $results->bindValue(1, $first_name, PDO::PARAM_STR);
+        $results->bindValue(2, $last_name, PDO::PARAM_STR);
+        $results->bindValue(3, $user_id, PDO::PARAM_INT);
         $results->execute();
     } catch (Exception $e){
         echo "Error!: ".$e->getMessage();
@@ -141,6 +172,12 @@ function update_user_password($email, $password){
         return false;
     }
     return true;
+}
+
+function redirect_unauthenticated_user_to_login($session){
+    if(!isset($session['logged_in']) || !$session['logged_in']){
+        header("Location: index.php");
+      }
 }
 
 ?>
