@@ -9,3 +9,9 @@ CREATE TABLE `users` (
  PRIMARY KEY (`id`),
  UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+CREATE TABLE `password_resets` ( 
+`id` INT(11) NOT NULL,
+`email` VARCHAR(255) NOT NULL,
+`token` VARCHAR(255) NOT NULL 
+) ENGINE = InnoDB;
