@@ -13,7 +13,13 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">PetProject</a>
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo">PetProject</a>
+      <?php if(!is_authenticated()) {?>
+        <ul class="left hide-on-med-and-down">
+          <li><a href="/countries.php">Countries</a></li>
+        </ul>
+      <?php } ?>
       <ul class="right hide-on-med-and-down">
         <?php if(!is_authenticated()) {?>
         <li><a href="/index.php">Login</a></li>
@@ -29,8 +35,8 @@
             <li><a href="/index.php">Login</a></li>
             <li><a href="/register.php">Register</a></li>
           <?php } else {?>
-              <li><a href="/profile.php">Profile</a></li>
-              <li><a href="/procedures/doLogout.php">Logout</a></li>
+            <li><a href="/profile.php">Profile</a></li>
+            <li><a href="/procedures/doLogout.php">Logout</a></li>
           <?php } ?>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
