@@ -48,3 +48,7 @@ form {
 .msg-success{
   background-color: #4CAF50;
 }
+
+table a {
+  color: #000;
+}
