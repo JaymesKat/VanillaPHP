@@ -1,30 +1,35 @@
 <?php
-  session_start();
-  include "inc/functions.php";
 
-  redirect_unauthenticated_user_to_login($_SESSION);
+use VanillaPHP\Repositories\User;
+use VanillaPHP\Helpers\AuthManager;
+use VanillaPHP\ViewFunctions;
+
+session_start();
+require __DIR__ . '/inc/bootstrap.php';
+
+AuthManager::redirect_unauthenticated_user_to_login($_SESSION);
   
-  if($_SERVER['REQUEST_METHOD'] == 'GET'){
-    if(isset($_GET['is_active']) && isset($_GET['id'])){
-      $user_id = $_GET['id'];
-      $is_active = $_GET['is_active'];
-      update_user_status($user_id, $is_active);
-      header("Location: users.php?success");
-    }
-    if(isset($_GET['success'])){
-      $message = 'User status updated';
-    }
-
-    if(isset($_SESSION['logged_in']) 
-      && isset($_SESSION['display_login_success'])
-      && ($_SESSION['display_login_success'] == true)){
-        $message = 'Successfully logged in';
-        $_SESSION['display_login_success'] = false; 
-    }
+if($_SERVER['REQUEST_METHOD'] == 'GET'){
+  if(isset($_GET['is_active']) && isset($_GET['id'])){
+    $user_id = $_GET['id'];
+    $is_active = $_GET['is_active'];
+    User::update_user_status($user_id, $is_active);
+    header("Location: users.php?success");
+  }
+  if(isset($_GET['success'])){
+    $message = 'User status updated';
   }
 
-  $users = get_all_users();
-  include "inc/header.php";
+  if(isset($_SESSION['logged_in']) 
+    && isset($_SESSION['display_login_success'])
+    && ($_SESSION['display_login_success'] == true)){
+      $message = 'Successfully logged in';
+      $_SESSION['display_login_success'] = false; 
+  }
+}
+
+$users = User::get_all_users();
+include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
 <div class="container"> 
@@ -40,7 +45,7 @@
                     <?php
                     if($users){
                         foreach($users as $user){     
-                          echo display_user_html($user);  
+                          echo ViewFunctions::display_user_html($user);  
                         }
                     }
                     ?>

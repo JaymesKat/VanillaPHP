@@ -1,7 +1,12 @@
 <?php
+
+use VanillaPHP\Repositories\User;
+use VanillaPHP\Services\PasswordResetService;
+
 session_start();
 
-include "inc/functions.php";
+require __DIR__ . '/inc/bootstrap.php';
+
 if (isset($_GET['token'])) {
     $_SESSION['token'] = trim(filter_input(INPUT_GET, 'token', FILTER_SANITIZE_STRING));
 }
@@ -18,8 +23,8 @@ if(isset($_POST['new_password'])){
     } else{
         $token = $_SESSION['token'];
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
-        $email = get_email_from_token($token);
-        $response = update_user_password($email, $user_pass);
+        $email = PasswordResetService::get_email_from_token($token);
+        $response = User::update_user_password($email, $user_pass);
         if($response){
             $message = 'Password updated Successfully';
         } else {
