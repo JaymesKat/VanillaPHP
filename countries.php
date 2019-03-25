@@ -1,22 +1,28 @@
 <?php
+
+use VanillaPHP\Services\LocationService;
+use VanillaPHP\Helpers\AuthManager;
+
 session_start();
 
 // Enable UTF-8 text encoding
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 
-include "inc/functions.php";
-redirect_unauthenticated_user_to_login($_SESSION);
+require __DIR__ . '/inc/bootstrap.php';
+
+
+AuthManager::redirect_unauthenticated_user_to_login($_SESSION);
 
 $states_placeholder_msg = "No country selected";
 $states = array();
 $selected_country = "";
-$countries = get_countries();
+$countries = LocationService::get_countries();
 
 if(isset($_GET['code']) && isset($_GET['country'])){
     $code = $_GET['code'];
     $selected_country = $_GET['country'];
-    $states = get_states($code);
+    $states = LocationService::get_states($code);
     if(!isset($states) || count($states) == 0) {
         $states_placeholder_msg = "No states listed for country";
     }
@@ -39,7 +45,7 @@ include "inc/header.php";
 
                     <tbody>
                         <?php 
-                        if(isset($countries)){
+                        if(isset($countries) && count($countries) > 0){
                             foreach($countries as $country){
                                 echo "<tr>
                                         <td>
@@ -50,6 +56,13 @@ include "inc/header.php";
                                         <td>$country->alpha3_code</td>
                                     </tr>";
                             }
+                        } else {
+                            echo "<tr>
+                                    <td>
+                                        Missing data:
+                                    </td>
+                                    <td> No data available now </td>
+                                  </tr>";
                         }
                         ?>
                     </tbody>

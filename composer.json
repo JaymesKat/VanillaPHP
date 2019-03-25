@@ -1,0 +1,10 @@
+{
+    "name": "jaymeskat/vanilla-php",
+    "type": "project",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "VanillaPHP\\": "src/"
+        }
+    }
+}

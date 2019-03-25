@@ -1,6 +1,5 @@
 <?php
-
-include "inc/functions.php";
+require __DIR__ . '/inc/bootstrap.php';
 
 if(isset($_GET['email'])){
     $email = $_GET['email'];
