@@ -17,7 +17,7 @@ if(isset($_POST['reset_password'])){
     } elseif(!Validator::check_email($user_email)){
         $error_message = 'Invalid email';
     } else{
-        $user = User::find_user_by_email($user_email);
+        $user = User::find_by_email($user_email);
         if(empty($user)){
             $error_message = 'User with given email does not exist';
         } else {

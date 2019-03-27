@@ -3,7 +3,7 @@ namespace VanillaPHP\Repositories;
 
 class User {
 
-    public static function get_all_users(){
+    public static function get_all(){
         global $db;
         try{
             $results = $db->query("SELECT * FROM users");
@@ -16,7 +16,7 @@ class User {
         return $users;
     }
     
-    public static function get_user_by_id($id){
+    public static function find_by_id($id){
         global $db;
         try {
             $sql = "SELECT first_name, last_name, email FROM users WHERE id = ?";
@@ -29,7 +29,7 @@ class User {
         }
     }
     
-    public static function find_user_by_email($email){
+    public static function find_by_email($email){
         global $db;
         try {
             $sql = "SELECT * FROM users WHERE email = ?";
@@ -42,7 +42,7 @@ class User {
         }
     }
     
-    public static function add_user($first_name, $last_name, $email, $password){
+    public static function add($first_name, $last_name, $email, $password){
         global $db;
         $sql = "INSERT INTO users (first_name, last_name, email, pass, role) VALUES(?, ?, ?, ?, 2)";
         try {
@@ -59,7 +59,7 @@ class User {
         return true;
     }
 
-    public static function update_user_status($user_id, $new_status){
+    public static function update_status($user_id, $new_status){
         global $db;
         $sql = "UPDATE users SET is_active = ? WHERE id = ?";
         try {
@@ -74,7 +74,7 @@ class User {
         return true;
     }
     
-    public static function update_user_profile($user_id, $first_name, $last_name){
+    public static function update_profile($user_id, $first_name, $last_name){
         global $db;
         $sql = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?";
         try {
@@ -90,7 +90,7 @@ class User {
         return true;
     }
 
-    public static function update_user_password($email, $password){
+    public static function update_password($email, $password){
         global $db;
         $sql = "UPDATE users SET pass = ? WHERE email = ?";
         try {

@@ -24,7 +24,7 @@ if(isset($_POST['new_password'])){
         $token = $_SESSION['token'];
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
         $email = PasswordResetService::get_email_from_token($token);
-        $response = User::update_user_password($email, $user_pass);
+        $response = User::update_password($email, $user_pass);
         if($response){
             $message = 'Password updated Successfully';
         } else {
