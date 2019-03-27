@@ -8,7 +8,7 @@ require __DIR__ . '/inc/bootstrap.php';
 $user_email = $user_pass = '';
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
-    header('Location: users.php');
+    header('Location: users');
 } else {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user_email = trim(filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL));
@@ -30,7 +30,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                     $_SESSION['logged_in_user_id'] = (int) $user['id'];
                     $_SESSION['logged_in_user_role'] = (int) $user['role'];
                     $_SESSION['display_login_success'] = true;
-                    header("Location: users.php");
+                    header("Location: users");
                 }
             }
         }

@@ -4,7 +4,7 @@ require __DIR__ . '/inc/bootstrap.php';
 if(isset($_GET['email'])){
     $email = $_GET['email'];
 } else {
-    header('location: index.php');
+    header('location: /');
 }
 include "inc/header.php";
 ?>

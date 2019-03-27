@@ -40,7 +40,7 @@ include "inc/header.php";
         <h4>Enter New Password</h4>	 
         <div id="new-password-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
-                <form class="password-reset-form" method="post" action="new_password.php">   
+                <form class="password-reset-form" method="post" action="new_password">   
                     <?php 
                         if(isset($error_message)){
                             echo "<p class='msg msg-error'>".$error_message."</p>";

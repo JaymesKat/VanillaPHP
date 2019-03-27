@@ -12,8 +12,8 @@ class ViewFunctions {
                 <p>".$user['email'].
                 "</p>"
                 .($user['is_active'] == 'yes'?
-                 "<a href='users.php?id=".$user['id']."&is_active=no' class='secondary-content'>Deactivate</a>":
-                 "<a href='users.php?id=".$user['id']."&is_active=yes' class='secondary-content'>Activate</a>").
+                 "<a href='users?id=".$user['id']."&is_active=no' class='secondary-content'>Deactivate</a>":
+                 "<a href='users?id=".$user['id']."&is_active=yes' class='secondary-content'>Activate</a>").
                 "</li>";
     }
 }

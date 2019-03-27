@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $user_id = $_GET['id'];
     $is_active = $_GET['is_active'];
     User::update_status($user_id, $is_active);
-    header("Location: users.php?success");
+    header("Location: users?success");
   }
   if(isset($_GET['success'])){
     $message = 'User status updated';

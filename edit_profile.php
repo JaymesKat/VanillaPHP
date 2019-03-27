@@ -25,7 +25,7 @@ if(isset($_POST['edit_profile'])){
         $result = User::update_profile($user_id, $first_name, $last_name);
         if($result){
             $_SESSION['profile_updated'] = true;
-            header("Location: profile.php");
+            header("Location: profile");
         } else {
             $error_message = "Update failed. Try again later";
         }

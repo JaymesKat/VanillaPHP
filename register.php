@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     else {
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
         if(User::add($first_name, $last_name, $user_email, $user_pass)){
-            header('Location: index.php');
+            header('Location: /');
             exit;
         } else {
             $error_message = "Could not add user";

@@ -21,23 +21,23 @@ use VanillaPHP\Helpers\AuthManager;
       <a id="logo-container" href="/" class="brand-logo">PetProject</a>
       <ul class="right hide-on-med-and-down">
         <?php if(!AuthManager::is_authenticated()) {?>
-        <li><a href="/index.php">Login</a></li>
-        <li><a href="/register.php">Register</a></li>
+        <li><a href="/">Login</a></li>
+        <li><a href="/register">Register</a></li>
         <?php } else {?>
-          <li><a href="/countries.php">Countries</a></li>
-          <li><a href="/users.php">Users</a></li>
-          <li><a href="/profile.php">Profile</a></li>
+          <li><a href="/countries">Countries</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/profile">Profile</a></li>
           <li><a href="/procedures/do_logout.php">Logout</a></li>
           <?php } ?>
       </ul>
 
         <ul id="nav-mobile" class="sidenav">
           <?php if(!AuthManager::is_authenticated()) {?>
-            <li><a href="/index.php">Login</a></li>
-            <li><a href="/register.php">Register</a></li>
+            <li><a href="/index">Login</a></li>
+            <li><a href="/register">Register</a></li>
           <?php } else {?>
-            <li><a href="/countries.php">Countries</a></li>
-            <li><a href="/profile.php">Profile</a></li>
+            <li><a href="/countries">Countries</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="/procedures/do_logout.php">Logout</a></li>
           <?php } ?>
         </ul>
