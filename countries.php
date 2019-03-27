@@ -49,7 +49,7 @@ include "inc/header.php";
                             foreach($countries as $country){
                                 echo "<tr>
                                         <td>
-                                            <a href='/countries.php?country=$country->name&code=$country->alpha3_code'>
+                                            <a href='/countries?country=$country->name&code=$country->alpha3_code'>
                                             $country->name
                                             </a>
                                         </td>

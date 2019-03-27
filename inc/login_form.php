@@ -27,8 +27,8 @@
             <button type="submit" class="btn waves-effect waves-light col s12 light-blue lighten-1">Login</button>
         </div>
         <div class="input-field col s12">
-            <p class="margin center medium-small sign-up">First time here? <a href="register.php">Register</a></p>
-            <p class="margin center medium-small sign-up">Forgot your password? <a href="password_reset.php">Reset</a></p>
+            <p class="margin center medium-small sign-up">First time here? <a href="register">Register</a></p>
+            <p class="margin center medium-small sign-up">Forgot your password? <a href="password_reset">Reset</a></p>
         </div>
     </div>
 </form>

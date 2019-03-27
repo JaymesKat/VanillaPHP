@@ -18,7 +18,7 @@
     </div>
 </li>
 <li class="collection-item right-align">
-    <a href="/edit_profile.php"class="waves-effect waves-light light-blue lighten-1 btn">
+    <a href="/edit_profile"class="waves-effect waves-light light-blue lighten-1 btn">
         <i class="material-icons right">edit</i>
         EDIT
     </a>
