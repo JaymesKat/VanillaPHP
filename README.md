@@ -20,4 +20,4 @@ This app is developed with this features;
 - Ensure PHP server and MySQL are running on your machine and launch the project in the browser with the url `http://localhost:8080/VanillaPHP`.     
 
 ## Running Tests
-Run this command in the terminal within the project root folder `composer test`
+Run this command: `composer test`, in the terminal within the project root folder.
