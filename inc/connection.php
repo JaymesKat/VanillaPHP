@@ -1,10 +1,10 @@
 <?php 
 
-$host = '127.0.0.1';
-$db   = 'pet_project';
-$user = 'root';
-$pass = 'root';
-$charset = 'utf8mb4';
+$host = DB_HOST;
+$db   = DB_NAME;
+$user = DB_USER;
+$pass = DB_PASS;
+$charset = DB_CHARSET;
 
 $dsn = "mysql:host=$host;dbname=$db;port=8889;charset=$charset";
 $options = [

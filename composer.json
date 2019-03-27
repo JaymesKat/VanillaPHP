@@ -8,9 +8,11 @@
         }
     },
     "require-dev": {
-        "codeception/codeception": "^2.5"
+        "codeception/codeception": "^2.5",
+        "symfony/dotenv": "^4.2"
     },
     "scripts": {
-        "test":"php vendor/bin/codecept run unit"
+        "test":"php vendor/bin/codecept run unit",
+        "test:coverage-report":"php vendor/bin/codecept run --steps --html"
     }
 }
