@@ -1,0 +1,23 @@
+suites:
+    unit:
+        path: .
+        actor: UnitTester
+        modules:
+            enabled:
+                # add more modules here
+                - Asserts
+                - Db:
+                    dsn: 'sqlite:tests/pet_project.sqlite'
+                    user: ''
+                    password: ''
+                    dump: 'tests/_data/dump.sql'
+                    populate: true
+                    cleanup: true
+settings:
+    shuffle: true
+    lint: true
+paths:
+    tests: tests
+    output: tests/_output
+    support: tests/_support
+    data: tests

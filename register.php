@@ -23,12 +23,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $error_message = 'Invalid email';
     } elseif($user_pass !== $confirm_pass){
         $error_message = 'Passwords do not match';
-    } elseif(!empty(User::find_user_by_email($user_email))){
+    } elseif(!empty(User::find_by_email($user_email))){
         $error_message = 'User already exists';
     }
     else {
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
-        if(User::add_user($first_name, $last_name, $user_email, $user_pass)){
+        if(User::add($first_name, $last_name, $user_email, $user_pass)){
             header('Location: index.php');
             exit;
         } else {

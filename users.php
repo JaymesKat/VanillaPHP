@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
   if(isset($_GET['is_active']) && isset($_GET['id'])){
     $user_id = $_GET['id'];
     $is_active = $_GET['is_active'];
-    User::update_user_status($user_id, $is_active);
+    User::update_status($user_id, $is_active);
     header("Location: users.php?success");
   }
   if(isset($_GET['success'])){
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
   }
 }
 
-$users = User::get_all_users();
+$users = User::get_all();
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">

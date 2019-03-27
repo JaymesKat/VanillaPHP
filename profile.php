@@ -8,7 +8,7 @@ require __DIR__ . '/inc/bootstrap.php';
 AuthManager::redirect_unauthenticated_user_to_login($_SESSION);
 
 $user_id = $_SESSION['logged_in_user_id'];
-$user = User::get_user_by_id($user_id);
+$user = User::find_by_id($user_id);
 
 if(isset($_SESSION['profile_updated']) && $_SESSION['profile_updated']) {
     $profile_updated = true;
