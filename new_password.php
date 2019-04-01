@@ -1,6 +1,6 @@
 <?php
 
-use VanillaPHP\Repositories\User;
+use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Services\PasswordResetService;
 
 session_start();
@@ -23,8 +23,12 @@ if(isset($_POST['new_password'])){
     } else{
         $token = $_SESSION['token'];
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
-        $email = PasswordResetService::get_email_from_token($token);
-        $response = User::update_password($email, $user_pass);
+        
+        $pass_reset_service = new PasswordResetService($db);
+        $email = $pass_reset_service->get_email_from_token($token);
+
+        $user_repo = new UserRepository($db);
+        $response = $user_repo->update_password($email, $user_pass);
         if($response){
             $message = 'Password updated Successfully';
         } else {

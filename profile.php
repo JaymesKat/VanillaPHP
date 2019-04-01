@@ -1,5 +1,5 @@
 <?php
-use VanillaPHP\Repositories\User;
+use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Helpers\AuthManager;
 
 session_start();
@@ -7,8 +7,9 @@ require __DIR__ . '/inc/bootstrap.php';
 
 AuthManager::redirect_unauthenticated_user_to_login($_SESSION);
 
+$user_repo = new UserRepository($db);
 $user_id = $_SESSION['logged_in_user_id'];
-$user = User::find_by_id($user_id);
+$user = $user_repo->find_by_id($user_id);
 
 if(isset($_SESSION['profile_updated']) && $_SESSION['profile_updated']) {
     $profile_updated = true;
