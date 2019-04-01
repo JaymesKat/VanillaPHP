@@ -1,6 +1,6 @@
 <?php
 
-use VanillaPHP\Repositories\User;
+use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Helpers\Validator;
 
 session_start();
@@ -15,6 +15,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $user_pass = $_POST['user_pass'];
     $confirm_pass = $_POST['confirm_pass'];
 
+    $user_repo = new UserRepository($db);
+
     if(empty($first_name) || empty($last_name) || empty($user_email) ||empty($user_pass) || empty($confirm_pass)){
         $error_message = 'Please fill all required fields: First name, Last name, Email, Password, Password Confirmation';
     } elseif(!Validator::check_name($first_name) || !Validator::check_name($last_name)){
@@ -23,12 +25,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $error_message = 'Invalid email';
     } elseif($user_pass !== $confirm_pass){
         $error_message = 'Passwords do not match';
-    } elseif(!empty(User::find_by_email($user_email))){
+    } elseif(!empty($user_repo->find_by_email($user_email))){
         $error_message = 'User already exists';
     }
     else {
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
-        if(User::add($first_name, $last_name, $user_email, $user_pass)){
+        if($user_repo->add($first_name, $last_name, $user_email, $user_pass)){
             header('Location: /');
             exit;
         } else {

@@ -2,12 +2,15 @@
 namespace VanillaPHP\Services;
 
 class PasswordResetService {
+    var $db;
+    function __construct($db){
+        $this->db = $db;
+    }
 
-    public static function save_password_reset_token($email, $token){
-        global $db;
+    public function save_password_reset_token($email, $token){
         $sql = "INSERT INTO password_resets (email, token) VALUES(?, ?)";
         try {
-            $results = $db->prepare($sql);
+            $results = $this->db->prepare($sql);
             $results->bindValue(1, $email, \PDO::PARAM_STR);
             $results->bindValue(2, $token, \PDO::PARAM_STR);
             $results->execute();
@@ -18,21 +21,20 @@ class PasswordResetService {
         return true;
     }
     
-    public static function mail_password_reset_instructions($email, $token){
+    public function mail_password_reset_instructions($email, $token){
         $to = $email;
         $subject = "Reset your password: PetProject website";
         $msg = "Hi there, click on this <a href='new_password?token=' . $token . '>link</a> to reset your password on our site";
         $msg = wordwrap($msg,70);
         $headers = "From: admin@petproject.com";
-        var_dump(mail($to, $subject, $msg, $headers));
+        mail($to, $subject, $msg, $headers);
         header('location: /../pending_password_reset?email=' . $email);
     }
     
-    public static function get_email_from_token($token){
-        global $db;
+    public function get_email_from_token($token){
         try {
             $sql = "SELECT email FROM password_resets WHERE token = ?";
-            $results = $db->prepare($sql);
+            $results = $this->db->prepare($sql);
             $results->bindValue(1, $token, \PDO::PARAM_STR);
             $results->execute();
             $user = $results->fetch();

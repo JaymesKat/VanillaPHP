@@ -1,6 +1,6 @@
 <?php
 
-use VanillaPHP\Repositories\User;
+use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Helpers\AuthManager;
 
 session_start(); 
@@ -9,7 +9,8 @@ require __DIR__ . '/inc/bootstrap.php';
 
 AuthManager::redirect_unauthenticated_user_to_login($_SESSION);
 $user_id = $_SESSION['logged_in_user_id'];
-$user = User::find_by_id($user_id);
+$user_repo = new UserRepository($db);
+$user = $user_repo->find_by_id($user_id);
 
 $first_name = $user['first_name'];
 $last_name = $user['last_name'];
@@ -22,7 +23,7 @@ if(isset($_POST['edit_profile'])){
     if(empty($first_name) || empty($last_name)){
         $error_message = 'Please fill in required fields: First Name, Last Name';
     } else{
-        $result = User::update_profile($user_id, $first_name, $last_name);
+        $result = $user_repo->update_profile($user_id, $first_name, $last_name);
         if($result){
             $_SESSION['profile_updated'] = true;
             header("Location: profile");
