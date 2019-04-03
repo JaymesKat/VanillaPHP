@@ -1,7 +1,9 @@
 {
     "name": "jaymeskat/vanilla-php",
     "type": "project",
-    "require": {},
+    "require": {
+        "altorouter/altorouter": "^1.2"
+    },
     "autoload": {
         "psr-4": {
             "VanillaPHP\\": "src/"
