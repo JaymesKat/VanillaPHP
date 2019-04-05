@@ -1,9 +1,5 @@
-document.addEventListener('DOMContentLoaded',function(){
-    req=new XMLHttpRequest();
-    req.open("GET", '/api/users', true);
-    req.send();
-    req.onload=function(){
-        users=JSON.parse(req.responseText);
+$(document).ready(function(){
+    function displayUsers(users){
         usersHTML = '';
         for(let i=0; i<users.length; i+=1){
             usersHTML += "<li class='collection-item avatar'><span class='title'>";
@@ -15,6 +11,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }
             usersHTML+="</li>";
         }
-        document.getElementById('user-list').innerHTML = usersHTML;
-    };
+        $('#user-list').html(usersHTML);
+    }
+    $.getJSON('/api/users', displayUsers);    
 });

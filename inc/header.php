@@ -14,6 +14,8 @@ use VanillaPHP\Helpers\AuthManager;
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
