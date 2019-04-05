@@ -20,7 +20,8 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-  <script src="js/scripts.js"></script>
-
+  <?php 
+   echo strpos($_SERVER['REQUEST_URI'], '/users') == 0? "<script src='js/scripts.js'></script>":"";
+  ?>
   </body>
 </html>
