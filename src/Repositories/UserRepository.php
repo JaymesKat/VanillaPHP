@@ -9,7 +9,7 @@ class UserRepository {
 
     public function get_all(){
         try{
-            $results = $this->db->query("SELECT first_name, last_name, is_active, role  FROM users");
+            $results = $this->db->query("SELECT id, first_name, last_name, email, is_active, role  FROM users");
         } catch(Exception $e){
             echo "Failed to fetch users";
             exit;

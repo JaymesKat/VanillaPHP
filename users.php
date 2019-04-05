@@ -2,7 +2,6 @@
 
 use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Helpers\AuthManager;
-use VanillaPHP\ViewFunctions;
 
 session_start();
 require __DIR__ . '/inc/bootstrap.php';
@@ -27,8 +26,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
       $_SESSION['display_login_success'] = false; 
   }
 }
-
-$users = $user_repo->get_all();
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
@@ -41,14 +38,7 @@ include "inc/header.php";
         <h4>Users</h4>	
         <div id="users-page" class="row">
             <div class="col s12">
-                <ul class="collection">
-                    <?php
-                    if($users){
-                        foreach($users as $user){     
-                          echo ViewFunctions::display_user_html($user);  
-                        }
-                    }
-                    ?>
+                <ul id="user-list" class="collection">
                 </ul>
             </div>
         </div>
