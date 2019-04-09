@@ -1,8 +1,8 @@
 <?php
+
+use VanillaPHP\Helpers\AuthManager;
+
 session_start();
+require __DIR__ . '/../inc/bootstrap.php';
 
-// remove all session variables
-session_unset(); 
-
-session_destroy();
-header('Location: /../?logout');
+AuthManager::logout();
