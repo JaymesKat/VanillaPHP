@@ -6,9 +6,16 @@ session_start();
 require __DIR__ . '/inc/bootstrap.php';
 
 $user_email = $user_pass = '';
+$user_repo = new UserRepository($db);
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
     header('Location: users');
+} elseif(isset($_COOKIE['user'])){
+    $user_repo->find_by_email($_COOKIE['user']);
+    $_SESSION['logged_in'] = true;
+    $_SESSION['logged_in_user_id'] = (int) $user['id'];
+    $_SESSION['logged_in_user_role'] = (int) $user['role'];
+    header("Location: users");
 } else {
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user_email = trim(filter_input(INPUT_POST, 'user_email', FILTER_SANITIZE_EMAIL));
@@ -19,7 +26,6 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
         } elseif(!Validator::check_email($user_email)){
             $error_message = 'Invalid email';
         } else{
-            $user_repo = new UserRepository($db);
             $user = $user_repo->find_by_email($user_email);
             if(empty($user)){
             $error_message = 'User with given email was not found';
@@ -31,6 +37,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
                     $_SESSION['logged_in_user_id'] = (int) $user['id'];
                     $_SESSION['logged_in_user_role'] = (int) $user['role'];
                     $_SESSION['display_login_success'] = true;
+                    setcookie("user", $user['email'], strtotime("+1day"), "/");
                     header("Location: users");
                 }
             }
