@@ -19,6 +19,7 @@ class AuthManager {
     public static function logout(){
         session_unset(); 
         session_destroy();
+        setcookie( "user", "", time()- 60, "/","", 0);
         header('Location: /');
     }
 }
