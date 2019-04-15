@@ -19,23 +19,23 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $message = 'User status updated';
   }
 
-  if(isset($_SESSION['logged_in']) 
+  if(isset($_SESSION['logged_in'])
     && isset($_SESSION['display_login_success'])
     && ($_SESSION['display_login_success'] == true)){
       $message = 'Successfully logged in';
-      $_SESSION['display_login_success'] = false; 
+      $_SESSION['display_login_success'] = false;
   }
 }
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
-<div class="container"> 
-        <?php 
+<div class="container">
+        <?php
           if(isset($message)){
             echo "<p class='msg msg-success'>".$message."</p>";
           }
         ?>
-        <h4>Users</h4>	
+        <h4>Users</h4>
         <div id="users-page" class="row">
             <div class="col s12">
                 <ul id="user-list" class="collection">

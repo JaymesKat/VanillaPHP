@@ -2,7 +2,7 @@
 namespace VanillaPHP\Services;
 
 class LocationService {
-    
+
     public static function get_countries(){
         $url = 'http://services.groupkt.com/country/get/all';
         try {

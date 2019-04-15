@@ -52,7 +52,7 @@ include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
 <div class="container">
-        <h4>Login</h4>	 
+        <h4>Login</h4>
         <div id="login-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <?php include "inc/login_form.php"; ?>

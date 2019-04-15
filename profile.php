@@ -19,10 +19,10 @@ if(isset($_SESSION['profile_updated']) && $_SESSION['profile_updated']) {
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container"> 
+    <div class="container">
         <div id="profile-page" class="row">
             <ul class="col s8 collection with-header z-depth-1">
-                <?php 
+                <?php
                     if(isset($profile_updated)){
                         echo "<p class='msg msg-success'>Profile Successfully Updated</p>";
                     }
@@ -32,6 +32,6 @@ include "inc/header.php";
         </div>
     </div>
 </div>
-<?php 
+<?php
 include "inc/footer.php";
 ?>

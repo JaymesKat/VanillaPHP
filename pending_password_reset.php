@@ -10,11 +10,11 @@ include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h4>Awaiting Password Reset</h4>	 
+        <h4>Awaiting Password Reset</h4>
         <div id="pending-password-reset-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
-                <form class="password-reset-form" method="post" action="new_password.php">   
-                    <?php 
+                <form class="password-reset-form" method="post" action="new_password.php">
+                    <?php
                         if(isset($email)){
                             echo "<p class='msg msg-success'> Password Reset instructions sent to $email</p>";
                         }

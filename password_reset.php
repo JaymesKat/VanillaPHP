@@ -34,7 +34,7 @@ include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h4>Reset Password</h4>	 
+        <h4>Reset Password</h4>
         <div id="reset-password-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <?php include "inc/reset_password_form.php"; ?>
