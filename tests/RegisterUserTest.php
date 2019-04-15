@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use VanillaPHP\Helpers\Validator;
 
@@ -8,7 +8,7 @@ class RegisterUserTest extends \Codeception\Test\Unit
      * @var \UnitTester
      */
     protected $tester;
-    
+
     protected function _before()
     {
     }
@@ -23,7 +23,7 @@ class RegisterUserTest extends \Codeception\Test\Unit
         $name = "name123@";
         $check = Validator::check_name($name);
         $this->assertEquals($check, 0);
-        
+
     }
 
     public function testEmailValidatesCorrectly()
@@ -31,6 +31,6 @@ class RegisterUserTest extends \Codeception\Test\Unit
         $email = "test@example";
         $check = Validator::check_email($email);
         $this->assertEquals($check, 0);
-        
+
     }
 }

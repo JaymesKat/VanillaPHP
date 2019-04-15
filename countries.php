@@ -26,12 +26,12 @@ if(isset($_GET['code']) && isset($_GET['country'])){
     if(!isset($states) || count($states) == 0) {
         $states_placeholder_msg = "No states listed for country";
     }
-} 
+}
 
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container"> 
+    <div class="container">
         <div id="profile-page" class="row">
             <div class="col s5 z-depth-1">
                 <h3 class="header">Countries</h3>
@@ -44,7 +44,7 @@ include "inc/header.php";
                     </thead>
 
                     <tbody>
-                        <?php 
+                        <?php
                         if(isset($countries) && count($countries) > 0){
                             foreach($countries as $country){
                                 echo "<tr>
@@ -67,18 +67,18 @@ include "inc/header.php";
                         ?>
                     </tbody>
                 </table>
-            </div>  
+            </div>
             <div class="col s5 offset-s1 z-depth-1">
             <h3 class="header">States</h3>
             <p>
-            <?php 
+            <?php
             if(!isset($selected_country)){
                 echo "<p>Click on a country to show its states</p>";
             } else {
                 echo "<strong>$selected_country</strong>";
             }
             ?>
-            <?php if(count($states) < 1) { 
+            <?php if(count($states) < 1) {
                 echo "<p id='showStates'><em>$states_placeholder_msg</em></p>";
             } else {
                 echo "<table class='striped responsive-table'>
@@ -101,7 +101,7 @@ include "inc/header.php";
             ?>
         </div>
     </div>
-</div>               
+</div>
 <?php
 include "inc/footer.php";
 ?>

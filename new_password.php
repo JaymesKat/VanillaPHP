@@ -23,7 +23,7 @@ if(isset($_POST['new_password'])){
     } else{
         $token = $_SESSION['token'];
         $user_pass = password_hash($user_pass, PASSWORD_DEFAULT);
-        
+
         $pass_reset_service = new PasswordResetService($db);
         $email = $pass_reset_service->get_email_from_token($token);
 
@@ -41,11 +41,11 @@ include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h4>Enter New Password</h4>	 
+        <h4>Enter New Password</h4>
         <div id="new-password-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
-                <form class="password-reset-form" method="post" action="new_password">   
-                    <?php 
+                <form class="password-reset-form" method="post" action="new_password">
+                    <?php
                         if(isset($error_message)){
                             echo "<p class='msg msg-error'>".$error_message."</p>";
                         }

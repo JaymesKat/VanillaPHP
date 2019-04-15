@@ -14,11 +14,11 @@ class UserRepository {
             echo "Failed to fetch users";
             exit;
         }
-    
+
         $users = $results->fetchAll();
         return $users;
     }
-    
+
     public function find_by_id($id){
         try {
             $sql = "SELECT first_name, last_name, email FROM users WHERE id = ?";
@@ -30,7 +30,7 @@ class UserRepository {
             echo "Error!: ".$e->getMessage();
         }
     }
-    
+
     public function find_by_email($email){
         try {
             $sql = "SELECT * FROM users WHERE email = ?";
@@ -42,7 +42,7 @@ class UserRepository {
             echo "Error!: ".$e->getMessage();
         }
     }
-    
+
     public function add($first_name, $last_name, $email, $password){
         $sql = "INSERT INTO users (first_name, last_name, email, pass, role) VALUES(?, ?, ?, ?, 2)";
         try {
@@ -72,7 +72,7 @@ class UserRepository {
         }
         return true;
     }
-    
+
     public function update_profile($user_id, $first_name, $last_name){
         $sql = "UPDATE users SET first_name = ?, last_name = ? WHERE id = ?";
         try {

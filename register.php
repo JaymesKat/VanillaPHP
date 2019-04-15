@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 ?>
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h4>Register Your New Account</h4>	 
+        <h4>Register Your New Account</h4>
         <div id="register-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <?php include "inc/register_form.php"; ?>

@@ -3,7 +3,7 @@
 use VanillaPHP\Repositories\UserRepository;
 use VanillaPHP\Helpers\AuthManager;
 
-session_start(); 
+session_start();
 require __DIR__ . '/inc/bootstrap.php';
 
 
@@ -36,7 +36,7 @@ if(isset($_POST['edit_profile'])){
 include "inc/header.php";
 ?>
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container"> 
+    <div class="container">
     <div id="edit-profile-page" class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <?php include "inc/edit_profile_form.php"; ?>
@@ -44,6 +44,6 @@ include "inc/header.php";
         </div>
     </div>
 </div>
-<?php 
+<?php
 include "inc/footer.php";
 ?>

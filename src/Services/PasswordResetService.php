@@ -20,7 +20,7 @@ class PasswordResetService {
         }
         return true;
     }
-    
+
     public function mail_password_reset_instructions($email, $token){
         $to = $email;
         $subject = "Reset your password: PetProject website";
@@ -30,7 +30,7 @@ class PasswordResetService {
         mail($to, $subject, $msg, $headers);
         header('location: /../pending_password_reset?email=' . $email);
     }
-    
+
     public function get_email_from_token($token){
         try {
             $sql = "SELECT email FROM password_resets WHERE token = ?";
@@ -44,5 +44,5 @@ class PasswordResetService {
         }
         return false;
     }
-    
+
 }
